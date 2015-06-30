@@ -12,10 +12,10 @@ module Rosette
           attr_accessor :logger
 
           def perform(options)
-            rosette_config.error_reporter.with_error_reporting do
+            # rosette_config.error_reporter.with_error_reporting do
               job = get_const_chain(options['klass']).new(*options['args'])
               job.work(rosette_config, logger)
-            end
+            # end
           end
 
           private
