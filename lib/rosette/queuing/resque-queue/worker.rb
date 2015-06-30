@@ -12,6 +12,8 @@ module Rosette
     module ResqueQueue
 
       class Worker < Rosette::Queuing::Worker
+        attr_reader :rosette_config, :logger
+
         def initialize(rosette_config, logger, options = {})
           @rosette_config = rosette_config
           @logger = logger
