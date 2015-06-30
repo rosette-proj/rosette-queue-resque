@@ -2,6 +2,7 @@
 
 require 'rspec'
 require 'spec/test_helpers'
+require 'rosette/core'
 require 'rosette/queuing/resque-queue'
 require 'pry-nav'
 
