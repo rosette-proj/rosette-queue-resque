@@ -30,13 +30,13 @@ module Rosette
         end
 
         def start_worker
-          rosette_config.error_reporting.with_error_reporting do
+          rosette_config.error_reporter.with_error_reporting do
             Rake::Task['resque:work'].invoke
           end
         end
 
         def start_scheduler
-          rosette_config.error_reporting.with_error_reporting do
+          rosette_config.error_reporter.with_error_reporting do
             Rake::Task['resque:scheduler'].invoke
           end
         end
