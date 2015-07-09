@@ -1,12 +1,19 @@
 # encoding: UTF-8
 
 require 'rosette/queuing'
+require 'resque-retry'
 
 module Rosette
   module Queuing
     module ResqueQueue
 
       class JobWrapper < Rosette::Queuing::Job
+        extend Resque::Plugins::Retry
+
+        # retry a max of 3 times, wait 30 seconds between retries
+        @retry_limit = 3
+        @retry_delay = 30
+
         class << self
           attr_accessor :rosette_config
           attr_accessor :logger

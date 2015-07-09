@@ -14,6 +14,7 @@ Gem::Specification.new do |s|
   s.has_rdoc = true
 
   s.add_dependency 'resque', '~> 1.25'
+  s.add_dependency 'resque-retry', '~> 1.4'
   s.add_dependency 'resque-scheduler', '~> 4.0'
   s.add_dependency 'rake'
 
