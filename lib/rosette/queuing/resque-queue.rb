@@ -11,3 +11,8 @@ module Rosette
     end
   end
 end
+
+require 'resque-retry'
+
+Resque::Failure::MultipleWithRetrySuppression.classes = [Resque::Failure::Redis]
+Resque::Failure.backend = Resque::Failure::MultipleWithRetrySuppression
