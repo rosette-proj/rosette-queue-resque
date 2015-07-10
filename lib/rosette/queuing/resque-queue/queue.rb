@@ -9,6 +9,8 @@ module Rosette
     module ResqueQueue
 
       class Queue < Rosette::Queuing::Queue
+        JobWrapper = ::Rosette::Queuing::ResqueQueue::JobWrapper
+
         def enqueue(job)
           if job.delay > 0
             enqueue_with_delay(job)

@@ -1,7 +1,6 @@
 # encoding: UTF-8
 
 require 'rosette/queuing'
-require 'resque-retry'
 
 module Rosette
   module Queuing
