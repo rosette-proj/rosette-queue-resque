@@ -1,5 +1,6 @@
 # encoding: UTF-8
 
+require 'redis'
 require 'resque'
 require 'resque-scheduler'
 require 'rosette/queuing'
@@ -10,6 +11,10 @@ module Rosette
 
       class Queue < Rosette::Queuing::Queue
         JobWrapper = ::Rosette::Queuing::ResqueQueue::JobWrapper
+
+        def initialize(options = {})
+          Resque.redis = Redis.new(options)
+        end
 
         def enqueue(job)
           if job.delay > 0
