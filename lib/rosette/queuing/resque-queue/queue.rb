@@ -12,8 +12,11 @@ module Rosette
       class Queue < Rosette::Queuing::Queue
         JobWrapper = ::Rosette::Queuing::ResqueQueue::JobWrapper
 
-        def initialize(options = {})
-          Resque.redis = Redis.new(options)
+        attr_reader :configurator
+
+        def initialize(configurator)
+          @configurator = configurator
+          Resque.redis = Redis.new(configurator.queue_options)
         end
 
         def enqueue(job)

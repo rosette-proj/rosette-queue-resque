@@ -5,7 +5,12 @@ require 'spec_helper'
 include Rosette::Queuing::ResqueQueue
 
 describe Queue do
-  let(:queue) { Rosette::Queuing::ResqueQueue::Queue.new }
+  let(:queue) do
+    Rosette::Queuing::ResqueQueue::Queue.new(
+      Rosette::Queuing::QueueConfigurator.new
+    )
+  end
+
   let(:job) { TestJob.new('foo', 'bar') }
 
   describe '#enqueue' do
