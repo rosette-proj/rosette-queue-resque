@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/rosette-proj/rosette-queue-resque.svg)](https://travis-ci.org/rosette-proj/rosette-queue-resque) [![Code Climate](https://codeclimate.com/github/rosette-proj/rosette-queue-resque/badges/gpa.svg)](https://codeclimate.com/github/rosette-proj/rosette-queue-resque)
+[![Build Status](https://travis-ci.org/rosette-proj/rosette-queue-resque.svg)](https://travis-ci.org/rosette-proj/rosette-queue-resque) [![Code Climate](https://codeclimate.com/github/rosette-proj/rosette-queue-resque/badges/gpa.svg)](https://codeclimate.com/github/rosette-proj/rosette-queue-resque) [![Test Coverage](https://codeclimate.com/github/rosette-proj/rosette-queue-resque/badges/coverage.svg)](https://codeclimate.com/github/rosette-proj/rosette-queue-resque/coverage)
 
 rosette-queue-resque
 ====================
