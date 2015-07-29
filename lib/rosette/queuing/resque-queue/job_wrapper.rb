@@ -12,10 +12,11 @@ module Rosette
           attr_accessor :logger
 
           def perform(options)
-            rosette_config.error_reporter.with_error_reporting do
-              job = get_const_chain(options['klass']).new(*options['args'])
-              job.work(rosette_config, logger)
-            end
+            job = get_const_chain(options['klass']).new(*options['args'])
+            job.work(rosette_config, logger)
+          rescue => e
+            rosette_config.error_reporter.report_error(e)
+            raise e  # fail the job so it appears in the failed queue
           end
 
           private
