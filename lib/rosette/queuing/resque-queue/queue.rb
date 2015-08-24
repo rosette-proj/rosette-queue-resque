@@ -31,13 +31,13 @@ module Rosette
 
         def enqueue_with_delay(job)
           Resque.enqueue_in_with_queue(
-            job.class.queue_name, job.delay, JobWrapper, args_for(job)
+            job.class.queue, job.delay, JobWrapper, args_for(job)
           )
         end
 
         def enqueue_without_delay(job)
           Resque.enqueue_to(
-            job.class.queue_name, JobWrapper, args_for(job)
+            job.class.queue, JobWrapper, args_for(job)
           )
         end
 
