@@ -31,18 +31,24 @@ module Rosette
 
         def enqueue_with_delay(job)
           Resque.enqueue_in_with_queue(
-            job.class.queue, job.delay, JobWrapper, args_for(job)
+            queue_from_job(job), job.delay, JobWrapper, args_for(job)
           )
         end
 
         def enqueue_without_delay(job)
           Resque.enqueue_to(
-            job.class.queue, JobWrapper, args_for(job)
+            queue_from_job(job), JobWrapper, args_for(job)
           )
         end
 
         def args_for(job)
           { 'klass' => job.class.name, 'args' => job.to_args }
+        end
+
+        def queue_from_job(job)
+          queue = job.respond_to?(:queue) ? job.queue : nil
+          queue ||= job.class.queue
+          queue
         end
       end
 

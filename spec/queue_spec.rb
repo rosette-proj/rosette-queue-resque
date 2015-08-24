@@ -23,6 +23,17 @@ describe Queue do
 
       queue.enqueue(job)
     end
+
+    it 'enqueues a job with an instance defined queue name' do
+      allow(job).to receive(:queue) { 'myqueue' }
+      expect(Resque).to receive(:enqueue_to).with(
+        'myqueue', JobWrapper, {
+          'klass' => 'TestJob', 'args' => ['foo', 'bar']
+        }
+      )
+
+      queue.enqueue(job)
+    end
   end
 
   context 'with delay' do
