@@ -3,7 +3,7 @@
 require 'rosette/queuing'
 
 class TestJob < Rosette::Queuing::Job
-  set_queue_name 'testqueue'
+  set_queue 'testqueue'
 
   def initialize(arg1, arg2)
     @arg1 = arg1
